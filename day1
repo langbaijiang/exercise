@@ -1,1 +1,32 @@
+    one.合并俩个有序数组
+//最优解法————利用逆向双指针合并俩个有序数组，避免了额外空间的开支。
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int a=m-1,b=n-1,tail=m+n-1,temp;//a是nums1数组的尾指诊，b是nums2的尾指针，temp是循环要用到的临时变量
+        while(a>=0||b>=0){
+            if(a==-1)temp=nums2[b--];
+            else if(b==-1)temp=nums1[a--];
+            else if(nums1[a]>nums2[b])temp=nums1[a--];
+            else temp=nums2[b--];
+            nums1[tail--]=temp;
+        }
 
+    }
+};
+                       two.删除有序数组中的重复项
+//双指针法
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int j=0;
+        for(int i=0;i<nums.size();i++)
+            if(nums[j]!=nums[i]){nums[++j]=nums[i];}
+            
+        return j+1;
+    }
+};
+————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+2025.3.14 sad
+以后这里是吐槽部分。
+唉，俩小时，才搞完俩个小小的简单题，道阻且长唉，噫嘘唏，总之慢慢来就是了，week5—8是每天俩道题，后期每天一道题，尽量在半小时以内一道题
