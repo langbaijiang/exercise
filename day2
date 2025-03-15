@@ -1,1 +1,15 @@
-
+1.找多数元素
+用的是最优解法——摩尔投票法：多数元素可以运用抵消原则，即票数正负抵消，最后剩下的即为多数元素。
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        int n=nums.size(),votes=0,x;
+        for(int num:nums){
+            if(votes==0)x=num;
+            votes=votes+(x==num?1:-1);
+        }
+        return x;
+    }
+};
+————————————————————————————————————————————————————————————————————————————————
+今天做第一题时候一开始用了双层循环，虽说超时间复杂度了，但至少一下子运行成功，也是一种进步
