@@ -24,5 +24,21 @@ public:
         return maxprofit;
     }
 };
+3.罗马字数转整数
+简单明了的方法：
+class Solution {
+public:
+    int romanToInt(string s) {
+    map<string,int> a={{"I",1},{"V",5},{"X",10},{"L",50},{"C",100},{"D",500},{"M",1000},{"IV", 3}, {"IX",8},{"XL", 30}, {"XC",80},{"CD",300}, {"CM", 800}};
+             int count=a[s.substr(0,1)];
+             for(int i=1;i<s.size();i++){
+                string one=s.substr(i,1);
+                string two=s.substr(i-1,2);
+                count+=a[two]?a[two]:a[one];
+             }
+             return count;
+    }
+};
+运用关联容器存储相应信息，并在循环中进行几个字数的判断，并且将俩个字符前的值减去，但这种解法空间和时间复杂度都很大，不是最优解。
 ————————————————————————————————————————————————————————————————————————————————
 今天做第一题时候一开始用了双层循环，虽说超时间复杂度了，但至少一下子运行成功，也是一种进步
