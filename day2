@@ -11,5 +11,18 @@ public:
         return x;
     }
 };
+2.买卖股票的最佳时间——单次便利
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int minprice=1e9;
+        int maxprofit=0;
+        for(auto price:prices){
+            minprice=min(minprice,price);
+            maxprofit=max(maxprofit,price-minprice);
+        }
+        return maxprofit;
+    }
+};
 ————————————————————————————————————————————————————————————————————————————————
 今天做第一题时候一开始用了双层循环，虽说超时间复杂度了，但至少一下子运行成功，也是一种进步
