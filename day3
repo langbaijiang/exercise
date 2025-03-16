@@ -1,1 +1,34 @@
-
+1.寻找最长公共前缀
+我看的是一位大神的做法，他是用sort排序把所有的字符串按照字典顺序（根据公共前缀进行排序），然后看第一个和最后一个字符串的共同前缀，即为这个数组里面的公共前缀，妙啊
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) {
+        int n=strs.size();
+        if(!n)return "";
+        sort(strs.begin(),strs.end());
+        string temp;
+        for(int i=0;i<strs[0].size()&&i<strs[n-1].size();i++){
+            if(strs[0][i]==strs[n-1][i])temp+=strs[0][i];
+            else break;
+        }
+        return temp;
+    }
+};
+2.寻找字符串第一个匹配的下标
+笨方法喽，kmp大一记得现在一点印象没得，俺不中嘞。
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        int rightlen=needle.size();
+        int n=haystack.size();
+        for(int i=0;i<n;i++){
+            int j=i,k=0;
+            while(haystack[j]==needle[k]){
+                j++;k++;
+                if(k==rightlen)return i;
+            }
+        }
+        return -1;
+    }
+};
+3.
