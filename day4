@@ -35,3 +35,21 @@ public:
         else return false;
     }
 };
+3.两个字符串：ransomNote 和 magazine ，判断 ransomNote 能不能由 magazine 里面的字符构成。
+说要用到哈希表，然后我去csdn上面看哈希表的知识，看半天，讲的什么线性存储，什么余数存储，还有哈希桶。
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        if(magazine.size()<ransomNote.size())return false;
+        vector<int> tong(26);
+        for(auto a:magazine){
+            tong[a-'a']++;
+        }
+        for(auto b:ransomNote){
+            tong[b-'a']--;
+            if(tong[b-'a']<0)return false;
+        }
+        return true;
+    }
+};
+这题目就比某个字母数量的大小的。也没看出什么哈希表的运用。
