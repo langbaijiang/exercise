@@ -19,3 +19,19 @@ public:
         return true; 
     }  
 };
+2.判断子序列
+由于和第一题类似，所以很快就做出来了并且通过，下面是我的方法
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
+        int n=s.size(),m=t.size(),count=0;
+        for(int tbegin=0,sbegin=0;tbegin<m&&sbegin<n;tbegin++){
+            if(t[tbegin]==s[sbegin]){
+                count++;
+                sbegin++;
+            }
+        }
+        if(count==n)return true;
+        else return false;
+    }
+};
