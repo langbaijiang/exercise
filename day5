@@ -56,3 +56,27 @@ public:
         return {};
     }
 };
+4.快乐数
+好好好，尽搁简单题提出新概念。快慢指诊————当慢指针走一次，快指针走俩次，此时俩指诊重合时，构成一个循环。至于快乐数，就是当一次循环后，和为1即是快乐数。
+md，幸亏没死磕。要死磕不知得浪费多久时间。
+int Sum(int n){
+    int sum=0;
+    while(n>0){
+        int temp=n%10;
+        sum+=temp*temp;
+        n/=10;
+    }
+    return sum;
+}
+class Solution {
+public:
+    bool isHappy(int n) {
+        int fast=n,low=n;
+        do{
+        low=Sum(low);
+        fast=Sum(fast);
+        fast=Sum(fast);
+    }while(low!=fast);
+    return low==1;
+    }
+};
