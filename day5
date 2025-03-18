@@ -80,3 +80,23 @@ public:
     return low==1;
     }
 };
+5.存在重复元素——给你一个整数数组 nums 和一个整数 k ，判断数组中是否存在两个 不同的索引 i 和 j ，满足 nums[i] == nums[j] 且 abs(i - j) <= k 。如果存在，返回 true ；否则，返回 false 。
+大体思路是边找边存，只要找到一个最小解，即i前的最大索引j，俩数想减的值小于等于k，即满足条件。
+class Solution {
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
+        unordered_map<int, int> dictionary;
+        int length = nums.size();
+        for (int i = 0; i < length; i++) {
+            int num = nums[i];
+            if (dictionary.count(num) && i - dictionary[num] <= k) {
+                return true;
+            }
+            dictionary[num] = i;
+        }
+        return false;
+    }
+};
+——————————————————————————————————————————————————————
+2025.3.18
+下午又睡多了，一下子俩小时就睡过去了，服了。
