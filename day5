@@ -40,7 +40,7 @@ public:
     }
 };
 3.求俩数之和
-emmm，这题浪费许多时间，也不算浪费吧，至少帮我重新回顾了下关联容器的一些知识，还有哦，以后要用undored_map,map就别用了
+emmm，这题浪费许多时间，也不算浪费吧，至少帮我重新回顾了下关联容器的一些知识，还有哦，以后要用unordered_map,map就别用了
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
