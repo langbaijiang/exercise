@@ -24,4 +24,35 @@ public:
         return true;
     }
 };
-2.
+2.有效的字母异位词
+嘿嘿，秒了，一次通过。
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        map<char,int>tong1,tong2;
+        for(auto c:s)tong1[c]+=1;
+        for(auto c:t)tong2[c]+=1;
+        if(s.size()!=t.size())return false;
+        for(int i=0;i<s.size();i++){
+            if(tong1[s[i]]!=tong2[s[i]])return false;
+        }
+        return true;
+    }
+};
+3.求俩数之和
+emmm，这题浪费许多时间，也不算浪费吧，至少帮我重新回顾了下关联容器的一些知识，还有哦，以后要用undored_map,map就别用了
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int,int> tong;
+        vector<int> result;
+        for(int i=0;i<nums.size();i++)tong[nums[i]]=i;
+        for(int i=0;i<nums.size();i++){
+            int temp=target-nums[i];
+            if(tong.find(temp)!=tong.end()&&i!=tong[temp]){result.push_back(tong[temp]);
+            result.push_back(i);
+            return result;}
+        }
+        return {};
+    }
+};
