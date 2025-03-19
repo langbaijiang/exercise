@@ -1,1 +1,26 @@
-
+1.汇总区间
+双指针题目，一开始没想到，一直搁那预估情况
+class Solution {
+public:
+    vector<string> summaryRanges(vector<int>& nums) {
+        vector<string> result;
+        int n=nums.size();
+        int i=0;
+        string temp;
+        while(i<n){
+            int low=i;
+            i++;
+            while(i<n&&nums[i]-1==nums[i-1]){
+                i++;
+            }
+            int high=i-1;
+            string temp=(to_string(nums[low]));
+            if(low<high){
+              temp.append("->");
+              temp.append(to_string(nums[high]));  
+            }
+            result.push_back(move(temp));
+        }
+        return result;
+    }
+};
