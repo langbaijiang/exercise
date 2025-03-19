@@ -43,3 +43,20 @@ public:
         return st.empty(); // 栈空表示所有括号已闭合
     }
 };
+3.环形链表
+呵呵呵，这快二慢一，一循环挺多场景都可应用哈。
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        if(head==NULL||head->next==NULL)return false;
+        ListNode *fast=head->next;
+        ListNode *slow=head;
+        while(fast!=NULL&&fast->next!=NULL){
+            if(slow==fast)return true;
+            fast=fast->next->next;
+            slow=slow->next;
+        }
+        return false;
+    }
+};
+4.
