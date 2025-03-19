@@ -24,4 +24,22 @@ public:
         return result;
     }
 };
-2.
+2.有效的括号
+呵呵呵，你敢信，这题捣鼓了俩道题的时间都没搞出来，逻辑一直混混沌沌的。
+这是deepseek的解法，就是先判断左括号对应的右括号，并将其压入栈，直到遇到字符中的右括号后，判断是否相等，不相等说明匹配失败。这解法有点妙，本俗人问好几遍才懂。
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> st;
+        for (char c : s) {
+            if (c == '(') st.push(')');
+            else if (c == '{') st.push('}');
+            else if (c == '[') st.push(']');
+            else {
+                if (st.empty() || st.top() != c) return false;
+                st.pop();
+            }
+        }
+        return st.empty(); // 栈空表示所有括号已闭合
+    }
+};
