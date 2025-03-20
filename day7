@@ -1,1 +1,11 @@
-
+1.二叉树的最大深度
+官方题解是俩个，一个深搜（用的递归，下面写的就是这个），一个广搜（先创建一个队列，再陆陆续续往里面填根、左子树、右子树）
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        if(root==nullptr)return 0;
+        int count=max(maxDepth(root->right),maxDepth(root->left));
+        return count+1;
+    }
+};
+2.
