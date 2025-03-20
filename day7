@@ -8,4 +8,17 @@ public:
         return count+1;
     }
 };
-2.
+2.相同的树
+依旧递归，深搜。
+class Solution {
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        if(p==nullptr&&q==nullptr)return true;
+        else if(p==nullptr||q==nullptr)return false;
+        else if(p->val!=q->val)return false;
+        else return isSameTree(p->left,q->left)&&isSameTree(p->right,q->right);
+    }
+};
+————————————————————————————————————————————————————————————
+2025.3.20
+咳咳，今天由于各种因素，比如晚自习少半小时啦，晚上要通话啦，咳咳，总之今天就俩题。明天一定四题往上，l trust myself。
