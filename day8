@@ -45,3 +45,28 @@ public:
         
     }
 };
+5.二叉树的层平均值
+哇哦，我的广搜猜想竟然成立了，我想着之前看到的广搜，然后在中间累加值，并输出平均值，随说在细节方面有不少错误，但总归有进步
+class Solution {
+public:
+    vector<double> averageOfLevels(TreeNode* root) {
+        vector<double> result;
+        queue<TreeNode*> tong;
+        tong.push(root);
+        while(!tong.empty()){
+            double temp1=0.00;double temp2=0.00;
+            int sz=tong.size();
+            int coung2=sz;
+            while(sz>0){
+                TreeNode *node=tong.front();tong.pop();
+                temp1+=node->val;
+                if(node->left){tong.push(node->left);}
+                if(node->right){tong.push(node->right);}
+                sz-=1;
+            }
+            temp2=temp1/coung2;
+            result.push_back(temp2);
+        }
+        return result; 
+    }
+};
