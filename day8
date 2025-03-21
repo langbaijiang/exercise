@@ -11,3 +11,16 @@ public:
         return root;
     }
 };
+2.对称二叉树
+呕。又tm是递归
+bool check(TreeNode *p,TreeNode *q){
+    if(!q&&!p)return true;
+    if(!p||!q)return false;
+    return p->val==q->val&&check(p->left,q->right)&&check(p->right,q->left);
+ }
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+        return check(root->left,root->right);
+    }
+};
