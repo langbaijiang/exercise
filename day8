@@ -1,1 +1,13 @@
-1.
+1.翻转二叉树
+又是讨厌的递归，给的的莫名其妙的，还是得问DeepSeek原理
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
+        if(root==nullptr)return nullptr;
+        TreeNode *right=invertTree(root->right);
+        TreeNode *left=invertTree(root->left);
+        root->right=left;
+        root->left=right;
+        return root;
+    }
+};
