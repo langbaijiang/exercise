@@ -34,3 +34,14 @@ public:
         return hasPathSum(root->left,targetSum-root->val)||hasPathSum(root->right,targetSum-root->val);
     }
 };
+4.完全二叉树的节点个数
+不管了，直接递归走起，嘿嘿嘿，官方解释太晦涩难懂了
+class Solution {
+public:
+    int countNodes(TreeNode* root) {
+        int sum=0;
+        if(root==nullptr)return 0;
+        return countNodes(root->left)+countNodes(root->right)+1;
+        
+    }
+};
