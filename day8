@@ -70,3 +70,26 @@ public:
         return result; 
     }
 };
+6.二叉搜索树的最小绝对差
+二叉搜索树的一个特性————按中序遍历是升序的，所以先递归中序遍历存储在一个数组里面，然后比较俩俩相差的最小值。
+void sert(TreeNode* root,vector<int>&temp){
+    if(!root)return;
+    sert(root->left,temp);
+    temp.push_back(root->val);
+    sert(root->right,temp);
+}
+class Solution {
+public:
+    int getMinimumDifference(TreeNode* root) {
+    vector<int> temp;
+    sert(root,temp);
+    int result=INT_MAX;
+    for(int i=0;i<temp.size()-1;i++){
+        result=abs(temp[i+1]-temp[i])<=result?abs(temp[i+1]-temp[i]):result;
+    }
+    return result;
+    }
+};
+——————————————————————————————————————————————————————————————————
+2025.3.21
+简单题这周估计就结束了，下面就是中等题和困难题，好日子到头了，唉。
