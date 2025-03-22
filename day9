@@ -58,3 +58,17 @@ public:
         }
     }
 };
+5.x的平方根
+这里用的是二分查找，然后重点是这个（long long)，因为mid*mid的值可能超出int的范围，所以取得范围大一些。
+class Solution {
+public:
+    int mySqrt(int x) {
+        int begin=0,end=x,result=-1;
+        while(begin<=end){
+            int mid=begin+(end-begin)/2;
+            if((long long)mid*mid<=x){begin=mid+1;result=mid;}
+            else end=mid-1;
+        }
+        return result;
+    }
+};
