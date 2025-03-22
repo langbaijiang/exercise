@@ -39,3 +39,22 @@ public:
         return result;
     }
 };
+4.爬楼梯
+也是做到动态规划的题目了。思想是f(n)=f(n-1)+f(n-2)，原因是每次爬楼梯只能爬1个或者2个，所以最后的就是n-1和n-2的方案之和，然后逐渐递增，不用递归是因为时间超了，所以用循环。
+class Solution {
+public:
+    int climbStairs(int n) {
+        int p=1;int q=2;
+        if(n==1)return p;
+        else if(n==2)return q;
+        else{
+            int r=0;
+            for(int i=3;i<=n;i++){
+                r=p+q;
+                p=q;
+                q=r;
+            }
+            return r;
+        }
+    }
+};
