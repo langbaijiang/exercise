@@ -1,1 +1,18 @@
+1.将有序数组转换为二叉搜索树
+根本思想是借助中序遍历的原理，再利用分治递归的思想，但这个边界有些难以理解，后续回顾时候重点看看。
+class Solution {
+public:
+    TreeNode* sortedArrayToBST(vector<int>& nums) {
+    return fenzhi(nums,0,nums.size()-1);
+    
+    }
 
+TreeNode* fenzhi(vector<int>& nums,int left,int right){
+    if(left>right)return nullptr;
+    int mid=(left+right)/2;
+    TreeNode* root=new TreeNode(nums[mid]);
+    root->left= fenzhi(nums,left,mid-1);
+    root->right=fenzhi(nums,mid+1,right);
+    return root;
+}
+};
