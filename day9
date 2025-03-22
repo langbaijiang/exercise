@@ -102,3 +102,24 @@ public:
         return true;
     }
 };
+8.搜索插入位置
+二分查找
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int f=0,e=nums.size()-1;
+        int result=nums.size();
+        while(f<=e){
+            int mid=f+(e-f)/2;
+            if(nums[mid]>=target){
+                e=mid-1;
+                result=mid;
+            }
+            else f=mid+1;
+        }
+            return result;
+    }
+};
+————————————————————————————————————————————
+2025.3.22
+面试150题中的简单题也是刷了一遍了，明天周日先把之前题目再复盘复盘，巩固巩固。下周也是week6开始刷中等题，估计头发要一小撮一小撮地掉了。
