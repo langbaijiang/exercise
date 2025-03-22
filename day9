@@ -16,3 +16,16 @@ TreeNode* fenzhi(vector<int>& nums,int left,int right){
     return root;
 }
 };
+2.位1的个数
+中心思想：n&（n-1），每次会将n的最低位的1翻为0。位运算真妙啊，这也意味着大部分只能死记硬背，啧。
+class Solution {
+public:
+    int hammingWeight(int n) {
+        int count=0;
+        while(n){
+            n=n&(n-1);
+            count++;
+        }
+        return count;
+    }
+};
