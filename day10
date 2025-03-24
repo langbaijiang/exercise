@@ -1,1 +1,46 @@
-1.
+1.给你一个有序数组 nums ，请你 原地 删除重复出现的元素，使得出现次数超过两次的元素只出现两次 ，返回删除后数组的新长度。
+卧槽，虽说根据DeepSeek纠正了下，但竟然通过了，但时间复杂度有些高，还得优化下代码，另外，用erase（）时候需要注意更改下界。
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int n=nums.size();
+        int i=0;
+        while(i<n){
+            int count=0;
+            for(int j=i+1;j<n;j++){
+            if(nums[i]==nums[j]){
+                count++;
+            if(count==2){nums.erase(nums.begin()+j);
+            count--;
+            j--;
+            n--;
+            }
+            }
+            }
+            i++;
+        }
+        return nums.size();
+    }
+};
+下面是官方题解
+草，真是反人类的想法。它解法主要是根据题目中的排序来的。设定俩个指针，fast和slow，slow作用是标定已经处理好的（这也是它最后返回slow的原因），fast是处理未检查的。因为看[slow-2]和
+[fast]，如果俩者相同说明出现了三个相同的元素，要去掉一个。至于怎么去，它是直接令fast下一个的值赋给slow，然后slow又完成了筛选。说实话，这常人真难以想到。
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int n = nums.size();
+        if (n <= 2) {
+            return n;
+        }
+        int slow = 2, fast = 2;
+        while (fast < n) {
+            if (nums[slow - 2] != nums[fast]) {
+                nums[slow] = nums[fast];
+                ++slow;
+            }
+            ++fast;
+        }
+        return slow;
+    }
+};
+
