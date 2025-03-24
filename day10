@@ -57,3 +57,18 @@ public:
         for(int i=0;i<n;i++)nums[i]=temp[i];
     }
 };
+3.给你一个整数数组 prices ，其中 prices[i] 表示某支股票第 i 天的价格。在每一天，你可以决定是否购买和/或出售股票。你在任何时候 最多只能持有一股股票。
+你也可以先购买，然后在同一天出售。返回你能获得的最大利润。
+贪心算法。emmm，它说——同时我们注意到对于(l[i],r[i])这一个区间贡献的价值 a(r[i])−a(l[i]),其实等价于(l[i],l[i+1],(l[i+1],l[i+2],…,(r[i−1],r[i]) 
+这若干个区间长度为 1 的区间的价值和。反正emm，我是难以理解的。
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n=prices.size();
+        int pro=0;
+        for(int i=1;i<n;i++){
+            pro+=max(0,prices[i]-prices[i-1]);
+        }
+        return pro;
+    }
+};
