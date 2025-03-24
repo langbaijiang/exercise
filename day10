@@ -43,4 +43,17 @@ public:
         return slow;
     }
 };
-
+2.给定一个整数数组 nums，将数组中的元素向右轮转 k 个位置，其中 k 是非负数。
+OK啊也是秒了，但我额外创建了一个数组，看看最优解法怎么写的。emmm，一个递归一个方法用了环状结构（总之还是难以理解）。
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        int n=nums.size();
+        int m=k%n;
+        vector<int> temp(n);
+        for(int i=0;i<n;i++){
+            temp[(i+m)%n]=nums[i];
+        }
+        for(int i=0;i<n;i++)nums[i]=temp[i];
+    }
+};
