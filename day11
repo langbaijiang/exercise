@@ -1,1 +1,18 @@
-
+1.跳跃游戏
+给你一个非负整数数组 nums ，你最初位于数组的第一个下标。数组中的每个元素代表你在该位置可以跳跃的最大长度。判断你是否能够到达最后一个下标，如果可以，返回 true ；否则，返回 false 。
+贪心算法，一直更新能跳到的最远位置，并将其与下个位置进行比较，如果小于，说明到不了下个位置即失败，如果可以再次判断最优距离或进行更新，知道最远位置大于末尾置。
+tm的，因为下标问题耽搁好久。
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        if(nums.size()==1)return true;
+        int temp=0,temp2=0;
+        int i=0;
+        for(int i=0;i<nums.size();i++){
+            temp=i+nums[i];
+            if(temp2>=i){temp2=max(temp2,temp);
+            if(temp2>=nums.size()-1)return true;}
+        }
+        return false;
+    }
+};
