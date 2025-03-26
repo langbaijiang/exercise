@@ -40,3 +40,24 @@ public:
         return result;
     }
 };
+3.加油站
+好难啊这题。这题用的贪心，关键点是——若从 start 出发到 i 时油量不足，则 start 到 i 之间的加油站均无法作为起点。因此直接跳过这些点，从 i+1 重新开始。
+class Solution {
+public:
+    int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+        int n=gas.size();
+        int total=0,current=0,start=0;
+        int i=0;
+        for(int i=0;i<n;i++){
+            total=total+gas[i]-cost[i];
+            current=current+gas[i]-cost[i];
+            if(current<0){
+                current=0;
+                start=i+1;
+            }
+        }
+        if(total<0)return -1;
+        else return start;
+    }
+};
+4.
