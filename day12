@@ -60,4 +60,40 @@ public:
         else return start;
     }
 };
-4.
+4.反转字符串中的单词
+hh，浪费好多时间，以后这种题直接看最优解就好。
+class Solution {
+public:
+    string reverseWords(string s) {
+        vector<string> temp;
+        int n = s.size();
+        int i = 0;
+        
+        // 分割单词
+        while (i < n) {
+            // 跳过空格
+            while (i < n && s[i] == ' ') i++;
+            if (i >= n) break;
+            
+            // 找到单词起始和结束位置
+            int f = i;
+            while (i < n && s[i] != ' ') i++;
+            int e = i - 1;
+            
+            // 提取单词
+            string word = s.substr(f, e - f + 1);
+            temp.push_back(word);
+        }
+        
+        // 逆序拼接结果
+        string result;
+        for (int w = temp.size() - 1; w >= 0; w--) {
+            result += temp[w];
+            if (w > 0) result += ' ';
+        }
+        return result;
+    }
+};
+——————————————————————————————————————————————————————————————————————————
+2025.3.26
+后面俩题浪费太多时间了，眼睛好酸好酸。拜拜。
