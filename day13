@@ -1,4 +1,22 @@
-1.
+1.Z字形变换
+将一个给定字符串 s 根据给定的行数 numRows ，以从上往下、从左到右进行 Z 字形排列。
+大佬给的题解是，按照题目将给的s遍历到新的字符串数组里面，最后遍历数组输出。最妙的是给的flag判定变量，完美模拟了z字形的走向。
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        if (numRows<2)return s;
+        vector<string> result(numRows);
+        int i=0,flag=-1;
+        for(auto c:s){
+            result[i].push_back(c);
+            if(i==0||i==numRows-1)flag=-flag;
+            i+=flag;
+        }
+        string temp;
+        for(auto c:result)temp+=c;
+        return temp;
+    }
+};
 
 
 
