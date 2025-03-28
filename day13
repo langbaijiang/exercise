@@ -32,7 +32,25 @@ public:
         return vector<int>{-1,-1};
     }
 };
-
+3.盛最多水的容器
+给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
+返回容器可以储存的最大水量。
+这题开始毫无头绪，直接看题解。题解这么讲的——长板向内移，一定变小，但短板向内不一定，所以移动短板，直到俩者相遇。
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int result=0;
+        int temp;
+        int n=height.size();
+        int i=0,j=n-1;
+        while(i<j){
+            if(height[i]<=height[j]){temp=height[i]*(j-i);i++;}
+            else {temp=height[j]*(j-i);j--;}
+            result=max(temp,result);
+        }
+        return result;
+    }
+};
 
 ——————————————————————————————————————————
 2025.3.28
