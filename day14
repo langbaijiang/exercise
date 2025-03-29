@@ -20,3 +20,44 @@ public:
         return result;
     }
 };
+2.长度最小的字数组（连续的）
+官方给的解法一是暴力，但超时了。
+class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int reslut=INT_MAX;
+        int n=nums.size();
+        if(n==0)return 0;
+        for(int i=0;i<n;i++){
+            int sum=0;
+            for(int j=i;j<n;j++){
+                sum+=nums[j];
+                if(sum>=target){reslut=min(reslut,j-i+1);break;}
+            }
+        }
+        return reslut==INT_MAX?0:reslut;
+    }
+}
+下面是最优解————滑动窗口
+简单来说，就是strat和end都要动，不停往后咕哝。
+class Solution {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int n=nums.size();
+        int strat=0,end=0;
+        int result=INT_MAX;
+        if(n==0)return 0;
+        int sum=0;
+        while(end<n){
+            sum+=nums[end];
+            while(sum>=target){
+                result=min(result,end-strat+1);
+                sum-=nums[strat];
+                strat++;
+            }
+            end++;
+        }
+        
+        return result==INT_MAX?0:result;
+    }
+};
