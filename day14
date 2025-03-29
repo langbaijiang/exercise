@@ -61,3 +61,28 @@ public:
         return result==INT_MAX?0:result;
     }
 };
+3.无重复字符的最长字串
+依旧是滑动窗口，但我开始写的代码太冗杂了，而且很多细节没考虑到，下面是DeepSeek给的题解，利用哈希集合存储，节省空间复杂度。
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        unordered_set<char> window; // 哈希集合存储当前窗口字符
+        int left = 0, max_len = 0;
+        
+        for (int right = 0; right < s.size(); right++) {
+            // 若当前字符已存在，缩小窗口左边界
+            while (window.count(s[right])) {
+                window.erase(s[left]);
+                left++;
+            }
+            // 将当前字符加入窗口
+            window.insert(s[right]);
+            // 更新最大长度
+            max_len = max(max_len, right - left + 1);
+        }
+        return max_len;
+    }
+};
+——————————————————————————————————————————————————————
+2025.3.29
+emm,下午依旧睡过了，起来腰疼颈椎疼的，以后得少睡点，还有今晚别熬夜了。
